@@ -1468,8 +1468,15 @@ prof_bt_keycomp(const void *k1, const void *k2)
 JEMALLOC_INLINE_C uint64_t
 prof_thr_uid_alloc(void)
 {
-
+	// Temporary workaround for https://github.com/jemalloc/jemalloc/issues/118
+	//
+	// Rust doesn't currently use heap profiling, so stubbing this out on
+	// 32-bit is fine.
+#if (LG_SIZEOF_PTR == 3 || LG_SIZEOF_INT == 3)
 	return (atomic_add_uint64(&next_thr_uid, 1) - 1);
+#else
+	abort();
+#endif
 }
 
 static prof_tdata_t *
