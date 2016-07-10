@@ -5028,7 +5028,7 @@ case "${host}" in
 	SOREV="${rev}.${so}"
 	sbrk_deprecated="1"
 	;;
-  *-*-freebsd*)
+  *-*-freebsd* | *-*-kfreebsd*)
 	CFLAGS="$CFLAGS"
 	abi="elf"
 	$as_echo "#define JEMALLOC_PURGE_MADVISE_FREE  " >>confdefs.h
