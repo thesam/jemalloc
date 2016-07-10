@@ -301,7 +301,7 @@ case "${host}" in
 	SOREV="${rev}.${so}"
 	sbrk_deprecated="1"
 	;;
-  *-*-freebsd*)
+  *-*-freebsd* | *-*-kfreebsd*)
 	CFLAGS="$CFLAGS"
 	abi="elf"
 	AC_DEFINE([JEMALLOC_PURGE_MADVISE_FREE], [ ])
